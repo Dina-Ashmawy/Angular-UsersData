@@ -1,0 +1,38 @@
+<div class="users-list-container">
+    <form #form="ngForm">
+        <mat-card class="card-filteration-container">
+            <div>
+                <span class="filter-title">Filter Categories</span>
+                <mat-form-field *ngFor="let typeFilter of typeFilters">
+                    <mat-label>{{ typeFilter.name }}</mat-label>
+                    <mat-select [(value)]="typeFilter.defaultValue" (selectionChange)="applyUserFilter()">
+                        <mat-option *ngFor="let filterValue of typeFilter.options" [value]="filterValue">
+                            {{ filterValue }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="columns-buttons-container">
+                <button mat-stroked-button class='button-container' (click)="addColumn()"> Add column </button>
+                <button mat-stroked-button class='button-container' (click)="removeColumn()"> Remove column </button>
+            </div>
+            <div class="columns-buttons-container">
+                <button mat-raised-button color="primary" class='button-container' (click)="resetFilters()"> Reset Filters </button>
+                <button mat-raised-button color="primary" class='button-container' (click)="exportCSV()"> Export to CSV </button>
+            </div>
+        </mat-card>
+        <div class="wrapper">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+                    <th mat-header-cell *matHeaderCellDef class="mat-header-cell"> {{column}} </th>
+                    <td mat-cell class="mat-cell" *matCellDef="let element">
+                        <div *ngIf="column !== 'picture'; else displayPicture">{{element[column] }} </div>
+                        <ng-template #displayPicture><img [src]="element[column]" class="img-src-container"></ng-template>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+            </table>
+        </div>
+    </form>
+</div>

@@ -1,10 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { AppService } from "./app.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+
+export class AppComponent implements OnInit {
+
   title = 'users-data';
+
+  constructor(private appService: AppService){}
+  ngOnInit(): void {
+    this.appService.checkDeviceWidth();
+  }
 }

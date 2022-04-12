@@ -1,6 +1,6 @@
 export let config = {
-  'usersList': {
-    'name': 'usersList',
-    'route': '/usersList'
+  'usersListData': {
+    'name': 'usersListData',
+    'route': '/usersListData'
   }
 }
