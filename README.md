@@ -14,11 +14,13 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng test (component.spec.ts)` to execute the unit tests via jest.
 
+Here is the docker link for the image:
+https://hub.docker.com/repository/docker/dinaashmawy/usersdata
 
 TODO: 
 1- Setup cypress and add E2E testing.
 2- Create virtual scrolling.
 3- Create a list of checkboxes containers all the parameters of the api response and the user will be able to choose the columns he need to filter that.
-after that I will take these parameters as a query parameters with the api call to get only the selected columns. (to change the current implementation from static to dynamic columns).
+after that I will take these parameters as a query parameters with the api call to get only the selected columns. (to change the current implementation from static with adding random columns to dynamic columns).
 
 
